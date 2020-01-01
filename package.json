@@ -1,6 +1,6 @@
 {
-  "name": "@pokusew/pcsclite",
-  "version": "0.5.2",
+  "name": "@rocbear/pcsclite",
+  "version": "0.5.3",
   "description": "Bindings over PC/SC to access Smart Cards",
   "keywords": [
     "nfc",
