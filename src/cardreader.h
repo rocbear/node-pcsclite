@@ -87,7 +87,7 @@ class CardReader: public Nan::ObjectWrap {
 
     public:
 
-        static void init(v8::Handle<v8::Object> target);
+        static void init(v8::Local<v8::Object> target);
 
         const SCARDHANDLE& GetHandler() const { return m_card_handle; };
 
@@ -120,7 +120,7 @@ class CardReader: public Nan::ObjectWrap {
         static void AfterTransmit(uv_work_t* req, int status);
         static void AfterControl(uv_work_t* req, int status);
 
-        static v8::Handle<v8::Value> CreateBufferInstance(char* data, unsigned long size);
+        static v8::Local<v8::Value> CreateBufferInstance(char* data, unsigned long size);
 
     private:
 

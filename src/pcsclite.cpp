@@ -6,7 +6,9 @@ using namespace node;
 
 Nan::Persistent<Function> PCSCLite::constructor;
 
-void PCSCLite::init(Handle<Object> target) {
+void PCSCLite::init(Local<Object> target) {
+
+    Local<Context> context = Nan::GetCurrentContext();
 
     // Prepare constructor template
     Local<FunctionTemplate> tpl = Nan::New<FunctionTemplate>(New);
@@ -16,8 +18,9 @@ void PCSCLite::init(Handle<Object> target) {
     Nan::SetPrototypeTemplate(tpl, "start", Nan::New<FunctionTemplate>(Start));
     Nan::SetPrototypeTemplate(tpl, "close", Nan::New<FunctionTemplate>(Close));
 
-    constructor.Reset(tpl->GetFunction());
-    target->Set(Nan::New("PCSCLite").ToLocalChecked(), tpl->GetFunction());
+
+    constructor.Reset(tpl->GetFunction(context).ToLocalChecked());
+    target->Set(Nan::New("PCSCLite").ToLocalChecked(), tpl->GetFunction(context).ToLocalChecked());
 }
 
 PCSCLite::PCSCLite(): m_card_context(0),
